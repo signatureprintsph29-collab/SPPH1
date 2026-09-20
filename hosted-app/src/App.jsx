@@ -1,4 +1,5 @@
-
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { supabase } from "./supabaseClient";
 // ---- Design tokens -------------------------------------------------
 const COLORS = {
   paper: "#F5F7FB",
