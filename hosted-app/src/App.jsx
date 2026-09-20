@@ -983,7 +983,13 @@ export default function App() {
               {jobFiles.filter((f) => f.jobId === jobDraft.id).map((f) => <FileRow key={f.id} file={f} onDelete={deleteFile} />)}
               {pendingFiles.map((f) => <FileRow key={f.id} file={f} uploading />)}
             </div>
-            <FileDropzone onFiles={(files) => uploadFiles(files, jobDraft.id)} />
+              {editingJobId ? (
+              <FileDropzone onFiles={(files) => uploadFiles(files, jobDraft.id)} />
+            ) : (
+              <div style={{ padding: 12, fontSize: 13, color: COLORS.inkSoft, border: `1px dashed ${COLORS.line}`, borderRadius: 8, textAlign: "center" }}>
+                Save this job first, then reopen it to attach files.
+              </div>
+            )}
           </FormRow>
 
           <div style={{ display: "flex", gap: 8, marginTop: 20 }}>
